@@ -1,0 +1,142 @@
+# ------------------------------
+
+# Dependencies
+
+# ------------------------------
+
+node_modules/
+.pnpm-store/
+.npm/
+.yarn/
+
+# ------------------------------
+
+# Build outputs
+
+# ------------------------------
+
+dist/
+build/
+.next/
+out/
+coverage/
+
+# ------------------------------
+
+# Logs
+
+# ------------------------------
+
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ------------------------------
+
+# Environment variables (IMPORTANT for AI keys)
+
+# ------------------------------
+
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# LangChain / OpenAI / API secrets
+
+*.env
+*.pem
+
+# ------------------------------
+
+# OS / System files
+
+# ------------------------------
+
+.DS_Store
+Thumbs.db
+
+# ------------------------------
+
+# IDE / Editor
+
+# ------------------------------
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+
+# TypeScript
+
+# ------------------------------
+
+*.tsbuildinfo
+
+# ------------------------------
+
+# Cache / temp
+
+# ------------------------------
+
+.cache/
+.temp/
+tmp/
+
+# ------------------------------
+
+# Testing
+
+# ------------------------------
+
+jest-cache/
+coverage/
+
+# ------------------------------
+
+# Vite / React specific
+
+# ------------------------------
+
+vite.config.ts.timestamp-*
+*.local
+
+# ------------------------------
+
+# LangChain / AI artifacts (optional)
+
+# ------------------------------
+
+# Uncomment if you store generated data locally
+
+# data/
+
+# embeddings/
+
+# vectorstores/
+
+# *.db
+
+# ------------------------------
+
+# Docker (if used)
+
+# ------------------------------
+
+docker-compose.override.yml
+
+# ------------------------------
+
+# Misc
+
+# ------------------------------
+
+*.tgz
+*.bak
+*.tmp

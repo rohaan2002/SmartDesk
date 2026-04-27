@@ -36,3 +36,18 @@ export function setSessionCookie(res: Response, user: SessionUser){
 export function clearSessionCookie(res: Response){
     res.clearCookie(process.env.SESSION_COOKIE_NAME!, cookieOptions());
 }
+
+export function readSessionCookie(req: {cookies?: Record<string,string>}){
+    const token = req.cookies?.[process.env.SESSION_COOKIE_NAME!];
+    if(!token){
+        return null;
+    }
+
+    try{
+        const decodedUser = jwt.verify(token, process.env.SESSION_JWT_SECRET!) as SessionUser;
+        return decodedUser;
+    }catch{
+        return null;
+    }
+
+}

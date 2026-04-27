@@ -1,17 +1,11 @@
 import { Router } from "express";
 import { AuthenticationResponse, ScalekitClient } from "@scalekit-sdk/node";
 import crypto from "crypto";
-import { setSessionCookie } from "./cookie";
+import { clearSessionCookie, setSessionCookie } from "./cookie";
+import { requireAuth } from "./auth.middleware";
+import  extractEnv  from "../utils";
 
 const router = Router();
-
-const extractEnv = (key:string)=>{
-    const value = process.env[key];
-    if(!value){
-        throw new Error(`Empty environment variable: ${key}`);
-    }
-    return value;
-}
 
 function makeScalekit(){
     return new ScalekitClient(
@@ -107,3 +101,25 @@ router.get("/callback", async(req,res)=>{
         )
     }
 })
+
+router.get("/me", requireAuth, async(req,res)=>{
+    try{
+        res.json({
+            user:{
+                id: req.user!.id,
+                name: req.user!.name,
+                email: req.user!.email
+            }
+        })
+    }catch{
+
+    }
+})
+
+router.post("/logout", (req, res)=>{
+    clearSessionCookie(res);
+
+    res.json({success: true});
+})
+
+export default router;

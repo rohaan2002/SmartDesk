@@ -1,6 +1,26 @@
 import { Button } from "../components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
+import { useEffect } from "react";
 
 export default function Login() {
+
+  const navigate = useNavigate();
+  const {user, loading} = useAuth();
+
+  useEffect(()=>{
+    if (!loading && user) {
+      navigate("/support", {replace: true});
+    }
+  }, [loading, user, navigate]);
+
+  function onLogin() {
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
+  }
+  
+  if(loading) return <div className="text-sm">Checking Session...</div>;
+  if(user) return null;
+
   return (
     <div className="text-2xl font-bold min-h-screen text-blue-">
       <div className="pointer-events-none fixed inset-0">
@@ -53,7 +73,11 @@ export default function Login() {
                     <div className=" p-3 space-y-3">
                       <Button
                       data-testid="login-btn"
-                      className="w-full bg-black text-white cursor-pointer">Login</Button>
+                      className="w-full bg-black text-white cursor-pointer"
+                      onClick={onLogin}
+                      >
+                        Login
+                      </Button>
                     </div>
                     </div>
                   </div>

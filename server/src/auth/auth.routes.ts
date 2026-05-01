@@ -102,8 +102,9 @@ router.get("/callback", async(req,res)=>{
     }
 })
 
-router.get("/me", requireAuth, async(req,res)=>{
-    try{
+router.get("/me", requireAuth, (req,res)=>{
+    console.log("inside /me route");
+    
         res.json({
             user:{
                 id: req.user!.id,
@@ -111,15 +112,13 @@ router.get("/me", requireAuth, async(req,res)=>{
                 email: req.user!.email
             }
         })
-    }catch{
-
-    }
+    
 })
 
 router.post("/logout", (req, res)=>{
     clearSessionCookie(res);
 
-    res.json({success: true});
+    res.json({ok: true});
 })
 
 export default router;

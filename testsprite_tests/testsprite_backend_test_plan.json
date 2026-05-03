@@ -1,0 +1,37 @@
+[
+  {
+    "id": "TC001",
+    "title": "get_status_endpoint_should_return_server_status",
+    "description": "Verify that GET /status returns HTTP 200 with JSON body {\"ok\": true, \"status\": \"UP\"} when the server is running normally."
+  },
+  {
+    "id": "TC002",
+    "title": "post_auth_e2e_login_should_create_session_cookie_and_return_success",
+    "description": "Verify that POST /auth/e2e/login with valid user data returns HTTP 200 with {\"ok\": true, \"message\": \"E2E login successful\"} and sets an httpOnly session cookie."
+  },
+  {
+    "id": "TC003",
+    "title": "post_auth_e2e_login_should_return_404_when_e2e_mode_disabled",
+    "description": "Verify that POST /auth/e2e/login returns HTTP 404 with {\"error\": \"E2E test mode is not enabled\"} when E2E mode is disabled."
+  },
+  {
+    "id": "TC004",
+    "title": "get_auth_me_should_return_401_without_session_cookie",
+    "description": "Verify that GET /auth/me without a valid session cookie returns HTTP 401 with {\"error\": \"Unauthenticated\"}."
+  },
+  {
+    "id": "TC005",
+    "title": "get_auth_me_should_return_user_info_with_valid_session_cookie",
+    "description": "Verify that GET /auth/me with a valid session cookie returns HTTP 200 with the current authenticated user's id, email, and name."
+  },
+  {
+    "id": "TC006",
+    "title": "post_api_support_run_should_return_401_without_session_cookie",
+    "description": "Verify that POST /api/support/run without a valid session cookie returns HTTP 401 with {\"error\": \"Unauthenticated\"}."
+  },
+  {
+    "id": "TC007",
+    "title": "post_api_support_run_should_succeed_with_valid_session_cookie",
+    "description": "Verify that POST /api/support/run with a valid session cookie returns HTTP 200 indicating the operation was accepted."
+  }
+]

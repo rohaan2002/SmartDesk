@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import authRoutes from "./auth/auth.routes";
+import authE2ERoutes from "./auth/e2e.routes";
 import cookieParser from "cookie-parser";
 import extractEnv from "./utils";
 
@@ -24,6 +25,7 @@ async function main(){
     })
 
     app.use("/auth", authRoutes);
+    app.use("/auth", authE2ERoutes);
 
     const port = Number(extractEnv("PORT")) || 5000;
     app.listen(port, ()=>{

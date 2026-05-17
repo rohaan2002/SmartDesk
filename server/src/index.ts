@@ -5,6 +5,8 @@ import authRoutes from "./auth/auth.routes";
 import authE2ERoutes from "./auth/e2e.routes";
 import cookieParser from "cookie-parser";
 import extractEnv from "./utils";
+import supportRouter from './support/support.routes';
+import { requireAuth } from "./auth/auth.middleware";
 
 async function main(){
     dotenv.config();
@@ -26,6 +28,9 @@ async function main(){
 
     app.use("/auth", authRoutes);
     app.use("/auth", authE2ERoutes);
+
+    app.use("/api", requireAuth)
+    app.use("/api/support", supportRouter);
 
     const port = Number(extractEnv("PORT")) || 5000;
     app.listen(port, ()=>{

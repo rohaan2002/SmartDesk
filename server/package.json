@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@langchain/google-genai": "^2.1.27",
+    "@langchain/google-vertexai": "^2.1.30",
+    "@langchain/langgraph": "^1.2.9",
     "@langchain/openai": "^1.4.4",
     "@scalekit-sdk/node": "^2.5.1",
     "cookie-parser": "^1.4.7",

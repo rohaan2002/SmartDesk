@@ -1,0 +1,18 @@
+
+
+
+    
+{
+  "rewrites": [
+    {
+      "source": "/auth/:path*",
+      "destination": "https://smartdesk-7gzx.onrender.com/auth/:path*"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://smartdesk-7gzx.onrender.com/api/:path*"
+    },
+    { "source": "/(.*)", "destination": "/" }
+  ]
+}
+

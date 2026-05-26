@@ -16,7 +16,7 @@ type AuthContextType = {
     user: User | null;
     loading: boolean;
     logout: () => Promise<void>;
-}
+}   
 
 const AuthContext = createContext<AuthContextType| null>(null);
 
@@ -32,7 +32,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 if (res.ok) {
                     setUser(res.data.user);
                 }else{
-                    console.error("Failed to fetch user data");
+                    console.error("Failed to fetch user data", res);
                     setUser(null);
                 }
             } catch (error) {

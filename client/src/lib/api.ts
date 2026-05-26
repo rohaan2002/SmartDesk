@@ -1,6 +1,7 @@
 
 export const BACKEND_URL = (
-    import.meta.env.VITE_BACKEND_URL || 'https://smartdesk-7gzx.onrender.com'
+    import.meta.env.VITE_BACKEND_URL 
+    // || 'https://smartdesk-7gzx.onrender.com'
 ).replace(/\/$/, '');
 
 export type ApiResponse<TData = unknown> = {

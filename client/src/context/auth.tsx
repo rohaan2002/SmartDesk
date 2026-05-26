@@ -27,16 +27,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     useEffect(() => {
         async function fetchMe() {
-            
+            try {
                 const res = await apiGet<MeResponse>("/auth/me");
                 if (res.ok) {
-                setUser(res.data.user);
+                    setUser(res.data.user);
                 }else{
                     console.error("Failed to fetch user data");
                     setUser(null);
                 }
-            setLoading(false);
-
+            } catch (error) {
+                console.error("Failed to fetch user data", error);
+                setUser(null);
+            } finally {
+                setLoading(false);
+            }
         }
 
         fetchMe();

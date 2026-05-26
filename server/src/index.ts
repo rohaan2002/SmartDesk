@@ -8,12 +8,19 @@ import extractEnv from "./utils";
 import supportRouter from './support/support.routes';
 import { requireAuth } from "./auth/auth.middleware";
 
+function allowedOrigins(){
+    return extractEnv("FRONTEND_URL")
+        .split(",")
+        .map((origin) => origin.trim().replace(/\/$/, ""))
+        .filter(Boolean);
+}
+
 async function main(){
     dotenv.config();
     const app = express();
 
     app.use(cors({
-        origin: extractEnv("FRONTEND_URL"),
+        origin: allowedOrigins(),
         credentials: true
     }));
     app.use(cookieParser());

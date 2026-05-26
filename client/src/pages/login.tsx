@@ -2,6 +2,7 @@ import { Button } from "../components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/auth";
 import { useEffect } from "react";
+import { BACKEND_URL } from "../lib/api";
 
 export default function Login() {
 
@@ -15,7 +16,7 @@ export default function Login() {
   }, [loading, user, navigate]);
 
   function onLogin() {
-    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/login`;
+    window.location.href = `${BACKEND_URL}/auth/login`;
   }
   
   if(loading) return <div className="text-sm">Checking Session...</div>;
